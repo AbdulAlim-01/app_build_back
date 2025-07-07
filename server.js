@@ -28,15 +28,19 @@ app.post("/generate-app", async (req, res) => {
       client_payload: payload,
     });
 
+    const zipName = `${appName}.zip`;
+    const downloadURL = `https://github.com/${GH_OWNER}/${GH_REPO}/releases/latest/download/${zipName}`;
+
     return res.status(200).json({
-      message: "Build started. It may take 5–10 minutes.",
-      download_link: `https://github.com/${GH_OWNER}/${GH_REPO}/releases/latest`,
+      message: "Build started. Check the download link in ~5–10 minutes.",
+      download_url: downloadURL,
     });
   } catch (e) {
     console.error("Dispatch failed:", e);
     return res.status(500).json({ error: "Build trigger failed" });
   }
 });
+
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");
