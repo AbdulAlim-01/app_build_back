@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 
 const octokit = new Octokit({ auth: process.env.GH_TOKEN });
 
-const GH_OWNER = "your-github-username";
-const GH_REPO = "your-repo-name";
+const GH_OWNER = "AbdulAlim-01";
+const GH_REPO = "app_build";
 
 app.post("/generate-app", async (req, res) => {
   const { url, appName, packageName } = req.body;
